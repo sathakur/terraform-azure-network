@@ -3,7 +3,7 @@ terraform {
 
   backend "azurerm" {
     resource_group_name  = "rg-tfstate"
-    storage_account_name = "tfstateweu850843035"
+    storage_account_name = "tfstateweu12345"
     container_name       = "tfstate"
     key                  = "network.terraform.tfstate"
   }
@@ -46,13 +46,5 @@ resource "azurerm_subnet" "subnet" {
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.0.1.0/24"]
-
-}
-
-resource "azurerm_subnet" "subnet02" {
-  name                 = "subnet-app-02"
-  resource_group_name  = azurerm_resource_group.rg.name
-  virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes     = ["10.0.2.0/24"]
 
 }
