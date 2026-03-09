@@ -106,6 +106,9 @@ resource "azurerm_linux_virtual_machine" "ubuntu_vm" {
   eviction_policy = "Deallocate"
 
   admin_username = "azureuser"
+  admin_password = "P@ssword1234!"
+
+  disable_password_authentication = false
 
   network_interface_ids = [
     azurerm_network_interface.vm_nic.id
@@ -123,11 +126,4 @@ resource "azurerm_linux_virtual_machine" "ubuntu_vm" {
     sku       = "22_04-lts"
     version   = "latest"
   }
-
-  admin_ssh_key {
-    username   = "azureuser"
-    public_key = file("~/.ssh/id_rsa.pub")
-  }
-
-  disable_password_authentication = true
 }
